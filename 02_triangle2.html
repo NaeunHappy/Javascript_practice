@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <span>층 수 입력</span>
+    <input type="text" id="floor"></input>
+    <!-- 컨트롤 슬래시 하면 html, js에 따라서 알아서 주석 생김-->
+    <!-- button#output -->
+    <button id="output">피라미드 출력</button>
+
+    <script>
+        //참고로 js에서는 문자개념(char)가 없다.
+        //무조건 문자열
+        //그래서 문장을 적을 때 '안녕' 이렇게 적어도 되고, "안녕" 이렇게 적어도 된다.
+        //document.querySelector는 style의 선택자처럼 태그 선택
+        let output = document.getElementById('output') // id만 선택하는 전용 기능
+        //addEventListner 혹은 onclick 이용해서 output 태그를 눌렀을 때 함수가 실행되게 함
+        output.onclick = function() {
+            let floor = document.querySelector('#floor').value
+            floor = Number(floor)  //숫자로 변환
+            // alert(++floor) // alert : 경고창 띄우기, ++floor : 값을 하나 증가시키고 그 다음 출력
+            let triangle = ""
+            for(let i = 1; i<=floor; i++)
+            {
+                for(let j = floor; j>i; j--)
+                    triangle += "&nbsp;" // &nbsp; : 태그안에서 space 그냥 스페이바 치면 한칸만 들어감.
+                    //triangle += "\u00a0" // innerText에서 공백 삽입
+                for(let j = 0; j<i; j++)
+                    triangle += "*"
+                
+                triangle +="<br>" 
+                //triangle += "\n" // innerText에서 개행 삽입(자동으로 <br>로 바뀜)        
+            }    
+            console.log(triangle)        
+
+            //document.body.remove('#h1result')
+            //let oldresult = document.getElementByID("h1result")
+            
+            // id가 h1result인 태그가 존재할 때, 이 태그를 지운다.
+            // js에서는 0,null,''(공백),undefined 와 같은 일부 값들만 false로 간주하고
+            // 그 외의 모든 값들은  
+            //document 
+
+            if(document.getElementById("h1result"))
+                document.getElementById("h1result").remove()
+
+
+
+
+
+
+            let result = document.createElement('h1')
+            result.id = "h1result"
+            result.innerHTML = triangle
+            //result.innerText = triangle
+            document.body.appendChild(result)
+
+
+        }
+
+    </script>
+
+</body>
+</html>

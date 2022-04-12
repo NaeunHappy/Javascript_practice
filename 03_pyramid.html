@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+
+    <span>피라미드</span>
+    <input class="text" id="floor">
+    <button id="output">피라미드 출력!!!</button>
+    <h1 id="result"></h1>
+    
+    <script>
+
+        let output = document.querySelector("#output") // addEventListener : click 하면 얘네를 불러와라.
+        output.addEventListener('click',function()     // 콜백: 함수안에 또 함수가 있는 것.
+        {
+            let floor = document.querySelector("#floor").value
+            floor = Number(floor)
+            let pyramid = ""
+            for(let i = 1; i<=floor; i++)
+            {
+                for(let j = floor; j>i; j--)
+                    pyramid += "\u00a0"
+                for(let j = 0; j<2*i-1; j++)
+                    pyramid +="*"
+                    pyramid +="\n"       
+            }
+            console.log(pyramid)
+            let h1 = document.querySelector("#result")
+            h1.innerText = pyramid
+        })
+
+        //alert(++floor)
+    </script>
+
+
+
+
+    <script>
+        let a = "하이"
+        a=1
+        a=function(){
+            alert("안녕")
+        }
+        //a()
+        a = [1,2,3,"배열",function(){alert("함수")}, ["a","b","c"] ]
+
+        //a[4]()
+
+
+        console.log(a)
+        console.log(a[5]) // a,b,c 가 나오고
+        console.log(a[5][0]) // a 가 나온다.
+
+        // js는 타입 안정적이지 않아서 변수의 타입이 뭐로 바뀔지 모른다.
+        // 그래서 숫자로써만 쓰고 싶다면 Number(a) 이렇게 할 수 있다.
+
+    </script>
+
+
+
+</body>
+</html>
